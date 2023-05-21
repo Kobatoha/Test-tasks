@@ -18,7 +18,12 @@ def income(departments, operations):
         year, month, dep_id, income = int(year), int(month), int(dep_id), int(income)
         if any(year < int(dep[1]) or year > int(dep[2]) for dep in departments if int(dep[0]) == dep_id):
             continue  # пропускаем некорректные данные
-        key = (year, month, next(dep[3] for dep in departments if int(dep[0]) == dep_id))
+        dep_name = ""
+        for dep in departments:
+            if int(dep[0]) == dep_id:
+                dep_name = dep[3]
+                break
+        key = (year, month, dep_name)
         profits[key] = profits.get(key, 0) + income
 
     # Преобразование словаря в список кортежей
