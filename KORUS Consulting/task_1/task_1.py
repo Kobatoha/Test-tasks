@@ -2,7 +2,7 @@ import psycopg2
 import csv
 
 readers = []
-
+''' Заполнение данными таблицы "readers" из файла readers.csv '''
 with open('readers.csv', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=';')
     next(reader) # пропускаем заголовок
@@ -24,7 +24,7 @@ with open('readers.csv', newline='') as csvfile:
 conn = psycopg2.connect(
     host="localhost",
     port='5433',
-    database="database",
+    database="postgres",
     user="postgres",
     password="password"
 )
